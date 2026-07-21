@@ -33,6 +33,15 @@ while True:
         quantidade = addQuantidade
         produtos.atualizaQuantidade(listaProdutos, nome, quantidade)
 
+    if resp == 4:
+        procuraProduto = str(input("Qual produto quer busca --> "))
+        nome = procuraProduto
+        produtos.buscaProdutos(listaProdutos, nome)
+
+    if resp == 5:
+        print("Total de produto no estoque")
+        produtos.totalProdutos(listaProdutos)
+
     if resp == 6:
         print("-" * 50)
         print("Quantidade total de produtos \n")

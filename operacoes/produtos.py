@@ -49,6 +49,44 @@ def atualizaQuantidade(listaProdutos, nome='', quantidade=0):
 
     return listaProdutos
 
+
+def buscaProdutos(listaProdutos, nome):
+    for produto in listaProdutos:
+        if produto["nome"] == nome:
+            print("-" * 50)
+            print("Resultado da busca ")
+            print()
+            print(f"Nome produto: {produto["nome"]}")
+            print(f"Preço do produto R$ {produto["preco"]}")
+            print(f"Quantidade do produto {produto["quantidade"]}")
+            print()
+            break
+        
+        if produto["nome"] != nome:
+            print("-" * 50)
+            print("Resultado da busca ")
+            print()
+            print("Produto não encontrado :( ")
+            break
+
+    return listaProdutos
+        
+
+def totalProdutos(listaProdutos):
+    totalProdutoEmEstoque = 0
+    valorTotal = 0
+    for produto in listaProdutos:
+        totalProdutoEmEstoque+=1
+        valorTotal += produto["preco"]
+
+
+    print(f"Produto: {totalProdutoEmEstoque}")
+    print(f"Valor total R$ {valorTotal}")
+
+    return listaProdutos
+
+
+
 def visualizarProduto(listaProdutos):
     i = 0
     for produto in listaProdutos:

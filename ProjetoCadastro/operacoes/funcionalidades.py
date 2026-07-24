@@ -40,8 +40,56 @@ def cadastrarPessoas(nome='', dataNascimento='', cargo=''):
     conexao.commit()
     conexao.close()
 
+    print("Cadastro realizado com sucesso !")
     return nome, dataNascimento, cargo
 
 
-def listarPessoas(nome, dataNascimento, cargo):
-    ...
+def listarPessoas():
+    conexao = conetar()
+    cursor = conexao.cursor()
+    cursor.execute("""
+                    SELECT nome, dataNascimento, cargo FROM pessoas
+                """)
+    registros = cursor.fetchall()
+
+    print("Todos os registro de pessoas \n")
+    for registro in registros:
+        print(registro[0], registro[1], registro[2])
+
+    conexao.close()
+
+    return registros
+
+
+def buscarPessoa(nome):
+    conexao = conetar()
+    cursor = conexao.cursor()
+    cursor.execute("""
+                    SELECT nome, dataNascimento, cargo FROM pessoas
+                """)
+    resultados = cursor.fetchall()
+
+    conexao.close()
+
+    validacao = False
+
+    for resultado in resultados:
+        if resultado[0] == nome:
+            print()
+            print("-" * 50)
+            print("                 DADOS CADASTRADOS")
+            print("-" * 50)
+            print(f"""Nome: {resultado[0]}
+Data Nascimento: {resultado[1]}
+Cargo Empresa: {resultado[2]}
+        """)
+            validacao = True
+            break
+
+    for resultado in resultados:
+        if resultado[0] != nome and validacao == False:
+            print()
+            print("Pessoa não cadastrada !")
+        break
+
+    return nome

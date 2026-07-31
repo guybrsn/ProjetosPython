@@ -49,6 +49,11 @@ class Pesonagem:
             print(f"[green]Barabens!, Você subiu de nivel [blue]{self.Nivel}[/blue][/green]")
         return
 
+    def adicinar_item_inventario(self, nome_item=''):
+        self.Inventario.append(nome_item)
+        print(f"Voçê pegou: {nome_item}")
+        return
+
 
     def verificar_nivel_up(self) -> bool:
         if self.Experiencia >= 100:
@@ -66,3 +71,5 @@ p1 = Pesonagem("Chico2000", "Mago")
 p1.sofrer_dano(10)
 p1.ganhar_experiencia(20)
 p1.ganhar_experiencia(20)
+p1.adicinar_item_inventario("Espada de ferro")
+p1.adicinar_item_inventario("Lã de ovelha")
